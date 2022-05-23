@@ -28,14 +28,22 @@ export const TodoList = ({ todos, setTodos }: Props) => {
       <ul>
         {
           todos
-            .filter(todo => filter === 'active' ? !todo.complete : filter === 'completed' ? todo.complete : todo)
+            .filter(todo => filter === 'active'
+              ? !todo.complete
+              : filter === 'completed'
+                ? todo.complete
+                : todo)
             .map(todo => {
+              const { id, text } = todo
               return (
-                <li className='flex ai-center' key={todo.id} >
-                  <p onClick={() => handleComplete(todo.id)}>
-                    {todo.text}
+                <li className='flex ai-center' key={id} >
+                  <img src="../../src/assets/icon-check.svg" alt="" />
+                  <p onClick={() => handleComplete(id)}>
+                    {text}
                   </p>
-                  <span onClick={() => handleDelete(todo.id)} >X</span>
+                  <span onClick={() => handleDelete(id)}>
+                    <img src="../../src/assets/icon-cross.svg" alt="" />
+                  </span>
                 </li>
               )
             })
@@ -52,7 +60,6 @@ export const TodoList = ({ todos, setTodos }: Props) => {
               </button>
             )
           })
-
         }
       </footer>
     </>

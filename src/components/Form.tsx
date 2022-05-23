@@ -8,8 +8,8 @@ interface Props {
 
 export const Form = ({ handleSubmit, handleInputChange, inputValue }: Props) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' placeholder='Create a new todo...' required onChange={handleInputChange} value={inputValue} />
+    <form onSubmit={handleSubmit} className='form'>
+      <input className='form__input' type='text' placeholder='Create a new todo...' required onChange={handleInputChange} value={inputValue} />
     </form>
   )
 }

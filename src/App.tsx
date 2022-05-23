@@ -28,11 +28,11 @@ function App () {
   }
 
   return (
-    <>
+    <div className='container'>
       <Header />
       <Form handleSubmit={handleSubmit} handleInputChange={handleInputChange} inputValue={inputValue} />
       <TodoList todos={todos} setTodos={setTodos} />
-    </>
+    </div>
   )
 }
 

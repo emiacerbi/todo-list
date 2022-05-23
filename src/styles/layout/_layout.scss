@@ -3,7 +3,11 @@
 body {
   font-family: $font-main;
 
-  // background-color: lightblue;
+  background-color: $dark-100;
+  color: $light-100;
+
+  background-image: url(../../../src/assets/bg-mobile-dark.jpg);
+  background-repeat: no-repeat;
 }
 
 span {
