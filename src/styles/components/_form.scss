@@ -1,9 +1,18 @@
+@use '../base/variables' as *;
+
 .form {
   &__input {
     width: 100%;
-    padding: .5rem 1rem;
-    border-radius: .25rem;
+    height: 3rem;
+    padding: .5rem 1rem .4rem;
     border: none;
-    // background-color: ;
+    border-radius: .25rem;
+    background-color: $dark-200;
+    color: $dark-400;
+    font-size: .9rem;
+
+    &::placeholder {
+      color: $dark-500;
+    }
   }
 }

@@ -1,0 +1,28 @@
+@use '../base/variables' as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: .75rem;
+  border-radius: .25rem;
+  background-color: $dark-200;
+  gap: 1rem;
+  font-size: .9rem;
+
+  button {
+    border: none;
+    background-color: transparent;
+    color: $dark-500;
+    cursor: pointer;
+
+    &:hover {
+      color: $dark-400;
+    }
+
+  }
+  
+  .selected {
+    color: $primary-100;
+  }
+  
+}

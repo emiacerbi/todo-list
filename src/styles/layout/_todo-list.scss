@@ -1,0 +1,58 @@
+@use '../base/variables' as *;
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  border-radius: .25rem;
+  background-color: $dark-200;
+  
+  &__list-item {
+    margin: 0;
+    padding: .8rem 1rem;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.245);
+    gap: .5rem;
+    
+    span {
+      margin-left: auto;
+      background-color: none;
+    }
+
+    &__text {
+      cursor: pointer;
+    }
+
+    &__text.line-through {
+      color: $dark-500;
+      text-decoration: line-through;
+    }
+
+    .cross {
+      cursor: pointer;
+    }
+
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: $dark-500;
+    font-size: .8rem;
+    gap: .25rem;
+    
+    button {
+      margin-left: auto;
+      border: none;
+      background-color: transparent;
+      color: $dark-500;
+      cursor: pointer;
+
+      &:hover {
+        color: $dark-400;
+      }
+    }
+  }
+
+}
