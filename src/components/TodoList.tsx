@@ -34,6 +34,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
   return (
     <>
       <div className={`todo-list ${theme}`}>
+        {/* @ts-ignore */}
         <ReactSortable
           list={todos}
           setList={setTodos}
@@ -50,7 +51,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
               .map(todo => {
                 const { id, text } = todo
                 return (
-                  <li key={id} className='flex ai-center todo-list__list-item'>
+                  <div key={id} className='flex ai-center todo-list__list-item'>
                     <div className={`todo-list__list-item__check ${theme}`} onClick={() => handleComplete(id)}>
                       <div className={`check-wrapper ${todo.complete && 'checked'} ${theme} `}>
                         {
@@ -68,7 +69,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                     <span onClick={() => handleDelete(id)}>
                       <img className='cross' src="../../src/assets/icon-cross.svg" alt="cross" width={13} />
                     </span>
-                  </li>
+                  </div>
                 )
               })
           }
