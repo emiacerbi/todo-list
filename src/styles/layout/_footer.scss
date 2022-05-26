@@ -11,12 +11,12 @@
   transition: background-color .5s ease;
   border-radius: .25rem;
   background-color: $dark-200;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   font-size: .9rem;
   gap: 1rem;
 
   @include mq('tablet-small') {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   &.light {

@@ -6,23 +6,27 @@ import { Header } from './components/Header'
 import { Form } from './components/Form'
 import { TodoList } from './components/TodoList'
 
-const initialExpenses = localStorage.getItem('todos')
+const initialTodos = localStorage.getItem('todos')
   ? JSON.parse(localStorage.getItem('todos')!)
   : []
 
 function App () {
   const [inputValue, setInputValue] = useState('')
-  const [theme, setTheme] = useState<string>('dark')
-  const [todos, setTodos] = useState<Note[]>(initialExpenses)
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+  const [todos, setTodos] = useState<Note[]>(initialTodos)
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
   const toggleTheme = () => {
-    theme === 'dark'
-      ? setTheme('light')
-      : setTheme('dark')
+    if (theme === 'dark') {
+      localStorage.setItem('theme', 'light')
+      setTheme('light')
+    } else {
+      localStorage.setItem('theme', 'dark')
+      setTheme('dark')
+    }
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -30,6 +34,12 @@ function App () {
 
     if (inputValue.length > 25) {
       alert('Message too long!')
+      setInputValue('')
+      return
+    }
+
+    if (inputValue.trim().length === 0) {
+      alert('No empty messages please!')
       setInputValue('')
       return
     }

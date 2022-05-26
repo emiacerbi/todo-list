@@ -10,6 +10,7 @@ interface Props {
 export const Form = ({ handleSubmit, handleInputChange, inputValue, theme }: Props) => {
   return (
     <form onSubmit={handleSubmit} className='form'>
+      <div className={`form__checkbox ${theme}`}></div>
       <input className={`form__input ${theme}`} type='text' placeholder='Create a new todo...' required onChange={handleInputChange} value={inputValue} />
     </form>
   )
