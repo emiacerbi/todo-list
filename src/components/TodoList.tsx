@@ -33,8 +33,6 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
 
   return (
     <>
-
-      {/* <ul className='todo-list' > */}
       <div className={`todo-list ${theme}`}>
         <ReactSortable
           list={todos}
@@ -50,10 +48,10 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                   ? todo.complete
                   : todo)
               .map(todo => {
-              // const { id, text } = todo
+                const { id, text } = todo
                 return (
-                  <li key={todo.id} className='flex ai-center todo-list__list-item'>
-                    <div className={`todo-list__list-item__check ${theme}`} onClick={() => handleComplete(todo.id)}>
+                  <li key={id} className='flex ai-center todo-list__list-item'>
+                    <div className={`todo-list__list-item__check ${theme}`} onClick={() => handleComplete(id)}>
                       <div className={`check-wrapper ${todo.complete && 'checked'} ${theme} `}>
                         {
                           todo.complete &&
@@ -63,21 +61,20 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                     </div>
                     <p
                       className={`todo-list__list-item__text ${todo.complete && 'line-through'} ${theme}` }
-                      onClick={() => handleComplete(todo.id)}
+                      onClick={() => handleComplete(id)}
                     >
-                      {todo.text}
+                      {text}
                     </p>
-                    <span onClick={() => handleDelete(todo.id)}>
+                    <span onClick={() => handleDelete(id)}>
                       <img className='cross' src="../../src/assets/icon-cross.svg" alt="cross" width={13} />
                     </span>
                   </li>
                 )
               })
           }
-          {/* </ul> */}
         </ReactSortable>
 
-        <div className='todo-list__footer'>
+        <div className={`todo-list__footer ${theme}`}>
           {
             todos.filter(todo => todo.complete === false).length
           }

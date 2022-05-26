@@ -12,21 +12,25 @@ interface Props {
 
 export const Footer = ({ filters, filter, setFilter, theme }: Props) => {
   return (
-    <footer className={`footer ${theme}`}>
-      {
-        filters.map(fil => {
-          const { content, type } = fil
-          return (
-            <button
-              key={type}
-              onClick={() => setFilter(type)}
-              className={`footer__btn ${type === filter && 'selected'}`}
-            >
-              {content}
-            </button>
-          )
-        })
-      }
-    </footer>
+    <>
+      <footer className={`footer ${theme}`}>
+        {
+          filters.map(fil => {
+            const { content, type } = fil
+            return (
+              <button
+                key={type}
+                onClick={() => setFilter(type)}
+                className={`footer__btn ${type === filter && 'selected'}`}
+              >
+                {content}
+              </button>
+
+            )
+          })
+        }
+      </footer>
+      <p className='indication'>Drag and drop to reorder list</p>
+    </>
   )
 }

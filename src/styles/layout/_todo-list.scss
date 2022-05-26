@@ -1,13 +1,14 @@
 @use '../base/variables' as *;
+@use '../base/mixins' as *;
 
 .todo-list {
   max-width: 540px;
   margin: 1rem auto;
   padding: 0;
-
   transition: background-color .5s ease;
   border-radius: .25rem;
   background-color: $dark-200;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   
   &.light {
     background-color: $light-100;
@@ -20,16 +21,17 @@
   }
   
   &__list-item {
+    
     margin: 0;
-    padding: .8rem 1rem;
+    padding: 1rem 1rem .9rem;
     border-bottom: 1px solid rgba(122, 122, 122, 0.155);
-    gap: .5rem;
+    gap: 1rem;
 
     &__check {
       display: block;
       position: relative;
-      width: 2rem;
-      height: 2rem;
+      width: 1.75rem;
+      height: 1.75rem;
       padding: 1px;
       border-radius: 50%;
       background: $dark-500;
@@ -45,8 +47,8 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 2rem;
-        height: 2rem;
+        width: 1.75rem;
+        height: 1.75rem;
         transition: opacity .3s ease;
         border-radius: 50%;
         opacity: 0;
@@ -67,10 +69,9 @@
         justify-content: center;
         width: 100%;
         height: 100%;
-        transition: background .3s ease;
         border-radius: 50%;
         background: $dark-200;
-
+        
         &.light {
           background: $light-100;
         }
@@ -87,11 +88,13 @@
     }
 
     &__text {
-      transition: .2s ease;
+      padding-top: 3px;
       font-size: .9rem;
       cursor: pointer;
 
-      
+      @include mq('tablet-small') {
+        font-size: 1.25rem;
+      }
     }
 
 
@@ -115,10 +118,22 @@
   &__footer {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: .75rem 1rem;
     color: $dark-500;
     font-size: .8rem;
     gap: .25rem;
+
+    @include mq('tablet-small') {
+      font-size: 1.25rem;
+    }
+
+    &.light {
+      button {
+        &:hover {
+          color: $light-500;
+        }
+      }
+    }
     
     button {
       margin-left: auto;
@@ -131,6 +146,13 @@
         color: $dark-400;
       }
     }
-  }
 
+  }
+  
+}
+
+.indication {
+  padding-block: 3rem;
+  color: $light-400;
+  text-align: center;
 }
