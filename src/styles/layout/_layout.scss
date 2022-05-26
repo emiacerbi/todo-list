@@ -2,16 +2,42 @@
 @use '../base/mixins' as *;
 
 body {
+  width: 100%;
+  font-family: $font-main;
+}
 
+.background {
+  width: 100%;
+  transition: background .5s ease;
+  background-color: $dark-100;
+}
+
+.background.light {
+  background-color: $light-200;
+}
+
+.container {
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-top: 5rem;
+  transition: .5s ease;
   background-color: $dark-100;
   background-image: url(../../../src/assets/bg-mobile-dark.jpg);
   background-repeat: no-repeat;
-  
   color: $light-100;
-  font-family: $font-main;
-  
+
   @include mq('phone-small') {
     background-image: url(../../../src/assets/bg-desktop-dark.jpg);
+    background-size: auto;
+  }
+}
+
+.container.light {
+  background-color: $light-200;
+  background-image: url(../../../src/assets/bg-mobile-light.jpg);
+
+  @include mq('phone-small') {
+    background-image: url(../../../src/assets/bg-desktop-light.jpg);
     background-size: auto;
   }
 }

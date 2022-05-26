@@ -7,11 +7,12 @@ interface Props {
   }[],
   filter: string,
   setFilter: Dispatch<SetStateAction<string>>
+  theme: string
 }
 
-export const Footer = ({ filters, filter, setFilter }: Props) => {
+export const Footer = ({ filters, filter, setFilter, theme }: Props) => {
   return (
-    <footer className='footer'>
+    <footer className={`footer ${theme}`}>
       {
         filters.map(fil => {
           const { content, type } = fil

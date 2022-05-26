@@ -3,11 +3,19 @@
 .footer {
   display: flex;
   justify-content: center;
+  max-width: 540px;
+  margin: 0 auto;
   padding: .75rem;
+
+  transition: background-color .5s ease;
   border-radius: .25rem;
   background-color: $dark-200;
-  gap: 1rem;
   font-size: .9rem;
+  gap: 1rem;
+
+  &.light {
+    background-color: $light-100;
+  }
 
   button {
     border: none;

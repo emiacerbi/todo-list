@@ -1,11 +1,14 @@
+@use '../base/mixins' as *;
+
 .header {
   justify-content: space-between;
+  max-width: 540px;
+  margin: 0 auto;
   padding-block: 2rem;
-
-
+  
   &__title {
     padding-top: 7.5px;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     letter-spacing: 7px;
     line-height: 1;
   }

@@ -8,7 +8,23 @@ import { TodoList } from './components/TodoList'
 
 function App () {
   const [inputValue, setInputValue] = useState('')
-  const [todos, setTodos] = useState<Note[]>([])
+  const [theme, setTheme] = useState<string>('dark')
+  const [todos, setTodos] = useState<Note[]>([{
+    id: 'randomId',
+    text: 'Go to the gym',
+    complete: false
+  },
+  {
+    id: 'randomId2',
+    text: 'Buy groceries',
+    complete: false
+  }])
+
+  const toggleTheme = () => {
+    theme === 'dark'
+      ? setTheme('light')
+      : setTheme('dark')
+  }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -34,10 +50,13 @@ function App () {
   }
 
   return (
-    <div className='container'>
-      <Header />
-      <Form handleSubmit={handleSubmit} handleInputChange={handleInputChange} inputValue={inputValue} />
-      <TodoList todos={todos} setTodos={setTodos} />
+    <div className={`background ${theme}`}>
+      <div className={`container ${theme}`}>
+        <Header toggleTheme={toggleTheme} theme={theme}/>
+        <Form handleSubmit={handleSubmit} handleInputChange={handleInputChange} inputValue={inputValue} theme={theme}/>
+        <TodoList todos={todos} setTodos={setTodos} theme={theme}/>
+      </div>
+
     </div>
   )
 }

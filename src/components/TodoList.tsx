@@ -2,12 +2,15 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import Note from '../types'
 import { Footer } from './Footer'
 
+import { ReactSortable } from 'react-sortablejs'
+
 interface Props {
-  todos: Note[],
-  setTodos: Dispatch<SetStateAction<Note[]>>,
+  todos: Note[]
+  setTodos: Dispatch<SetStateAction<Note[]>>
+  theme: string
 }
 
-export const TodoList = ({ todos, setTodos }: Props) => {
+export const TodoList = ({ todos, setTodos, theme }: Props) => {
   const [filter, setFilter] = useState('all')
 
   const filters = [
@@ -32,45 +35,64 @@ export const TodoList = ({ todos, setTodos }: Props) => {
     <>
 
       {/* <ul className='todo-list' > */}
-      <ul className='todo-list'>
-        {
-          todos
-          // .filter(todo => filter === 'active'
-          //   ? !todo.complete
-          //   : filter === 'completed'
-          //     ? todo.complete
-          //     : todo)
-            .map(todo => {
+      <div className={`todo-list ${theme}`}>
+        <ReactSortable
+          list={todos}
+          setList={setTodos}
+          animation={200}
+          delay={2}
+        >
+          {
+            todos
+              .filter(todo => filter === 'active'
+                ? !todo.complete
+                : filter === 'completed'
+                  ? todo.complete
+                  : todo)
+              .map(todo => {
               // const { id, text } = todo
-              return (
-                <li key={todo.id} className='flex ai-center todo-list__list-item'>
-                  <img src="../../src/assets/icon-check.svg" alt="" onClick={() => handleComplete(todo.id)}/>
-                  <p className={`todo-list__list-item__text ${todo.complete && 'line-through'}` }>
-                    {todo.text}
-                  </p>
-                  <span onClick={() => handleDelete(todo.id)}>
-                    <img className='cross' src="../../src/assets/icon-cross.svg" alt="cross" width={13} />
-                  </span>
-                </li>
-              )
-            })
-        }
-      </ul>
+                return (
+                  <li key={todo.id} className='flex ai-center todo-list__list-item'>
+                    <div className={`todo-list__list-item__check ${theme}`} onClick={() => handleComplete(todo.id)}>
+                      <div className={`check-wrapper ${todo.complete && 'checked'} ${theme} `}>
+                        {
+                          todo.complete &&
+                            <img src="../../src/assets/icon-check.svg" alt="" />
+                        }
+                      </div>
+                    </div>
+                    <p
+                      className={`todo-list__list-item__text ${todo.complete && 'line-through'} ${theme}` }
+                      onClick={() => handleComplete(todo.id)}
+                    >
+                      {todo.text}
+                    </p>
+                    <span onClick={() => handleDelete(todo.id)}>
+                      <img className='cross' src="../../src/assets/icon-cross.svg" alt="cross" width={13} />
+                    </span>
+                  </li>
+                )
+              })
+          }
+          {/* </ul> */}
+        </ReactSortable>
 
-      <div className='todo-list__footer'>
-        {
-          todos.filter(todo => todo.complete === false).length
-        }
-        <span>
+        <div className='todo-list__footer'>
+          {
+            todos.filter(todo => todo.complete === false).length
+          }
+          <span>
             items left
-        </span>
+          </span>
 
-        <button onClick={deleteAllComplete}>
+          <button onClick={deleteAllComplete}>
             Clear completed
-        </button>
+          </button>
+        </div>
+
       </div>
 
-      <Footer filters={filters} filter={filter} setFilter={setFilter} />
+      <Footer filters={filters} filter={filter} setFilter={setFilter} theme={theme} />
 
     </>
   )
