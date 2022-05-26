@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import Note from '../types'
+import { Footer } from './Footer'
 
 interface Props {
   todos: Note[],
-  setTodos: Function,
+  setTodos: Dispatch<SetStateAction<Note[]>>,
 }
 
 export const TodoList = ({ todos, setTodos }: Props) => {
@@ -29,60 +30,48 @@ export const TodoList = ({ todos, setTodos }: Props) => {
 
   return (
     <>
-      <ul className='todo-list' >
+
+      {/* <ul className='todo-list' > */}
+      <ul className='todo-list'>
         {
           todos
-            .filter(todo => filter === 'active'
-              ? !todo.complete
-              : filter === 'completed'
-                ? todo.complete
-                : todo)
+          // .filter(todo => filter === 'active'
+          //   ? !todo.complete
+          //   : filter === 'completed'
+          //     ? todo.complete
+          //     : todo)
             .map(todo => {
-              const { id, text } = todo
+              // const { id, text } = todo
               return (
-                <li className='flex ai-center todo-list__list-item ' key={id} >
-                  <img src="../../src/assets/icon-check.svg" alt="" />
-                  <p className={`todo-list__list-item__text ${todo.complete && 'line-through'}`} onClick={() => handleComplete(id)}>
-                    {text}
+                <li key={todo.id} className='flex ai-center todo-list__list-item'>
+                  <img src="../../src/assets/icon-check.svg" alt="" onClick={() => handleComplete(todo.id)}/>
+                  <p className={`todo-list__list-item__text ${todo.complete && 'line-through'}` }>
+                    {todo.text}
                   </p>
-                  <span onClick={() => handleDelete(id)}>
+                  <span onClick={() => handleDelete(todo.id)}>
                     <img className='cross' src="../../src/assets/icon-cross.svg" alt="cross" width={13} />
                   </span>
                 </li>
               )
             })
         }
-
-        <div className='todo-list__footer'>
-          {
-            todos.filter(todo => todo.complete === false).length
-          }
-          <span>
-            items left
-          </span>
-
-          <button onClick={deleteAllComplete}>
-            Clear completed
-          </button>
-        </div>
       </ul>
 
-      <footer className='footer'>
+      <div className='todo-list__footer'>
         {
-          filters.map(fil => {
-            const { content, type } = fil
-            return (
-              <button
-                key={type}
-                onClick={() => setFilter(type)}
-                className={`footer__btn ${type === filter && 'selected'}`}
-              >
-                {content}
-              </button>
-            )
-          })
+          todos.filter(todo => todo.complete === false).length
         }
-      </footer>
+        <span>
+            items left
+        </span>
+
+        <button onClick={deleteAllComplete}>
+            Clear completed
+        </button>
+      </div>
+
+      <Footer filters={filters} filter={filter} setFilter={setFilter} />
+
     </>
   )
 }

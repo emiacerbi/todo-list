@@ -12,7 +12,13 @@ function App () {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(inputValue)
+
+    if (inputValue.length > 20) {
+      alert('Message too long!')
+      setInputValue('')
+      return
+    }
+
     const newNote = {
       id: uuid(),
       text: inputValue,

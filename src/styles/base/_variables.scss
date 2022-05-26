@@ -29,6 +29,7 @@ $dark-700: hsl(237, 14%, 26%);
 $font-main: 'Josefin Sans', sans-serif;
 
 $breakpoints: (
+    "phone-small":  375px,
     "phone":        400px,
     "phone-wide":   480px,
     "phablet":      560px,
