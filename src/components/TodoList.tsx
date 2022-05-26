@@ -56,7 +56,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                       <div className={`check-wrapper ${todo.complete && 'checked'} ${theme} `}>
                         {
                           todo.complete &&
-                            <img src="../../src/assets/icon-check.svg" alt="" />
+                            <img src="../../assets/icon-check.svg" alt="" />
                         }
                       </div>
                     </div>
@@ -67,7 +67,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                       {text}
                     </p>
                     <span onClick={() => handleDelete(id)}>
-                      <img className='cross' src="../../src/assets/icon-cross.svg" alt="cross" width={13} />
+                      <img className='cross' src="../../assets/icon-cross.svg" alt="cross" width={13} />
                     </span>
                   </div>
                 )
