@@ -22,22 +22,22 @@ body {
   padding-top: 4rem;
   transition: .5s ease;
   background-color: $dark-100;
-  background-image: url(../../../assets/bg-mobile-dark.jpg);
+  background-image: url(../assets/bg-mobile-dark.jpg);
   background-repeat: no-repeat;
   color: $light-100;
 
   @include mq('phone-small') {
-    background-image: url(../../../assets/bg-desktop-dark.jpg);
+    background-image: url(../assets/bg-desktop-dark.jpg);
     background-size: auto;
   }
 }
 
 .container.light {
   background-color: $light-200;
-  background-image: url(../../../assets/bg-mobile-light.jpg);
+  background-image: url(../assets/bg-mobile-light.jpg);
 
   @include mq('phone-small') {
-    background-image: url(../../../assets/bg-desktop-light.jpg);
+    background-image: url(../assets/bg-desktop-light.jpg);
     background-size: auto;
   }
 }
