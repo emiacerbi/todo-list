@@ -20,11 +20,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./assets/screenshot.png)
+![](./src/assets/screenshot.png)
 
 ### Links
 
-<!-- - Live Site URL: [Add live site URL here](https://your-live-site-url.com) -->
+- Live Site URL: [Link]([https://your-live-site-url.com](https://todo-list-nine-psi.vercel.app/))
 
 ## My process
 
