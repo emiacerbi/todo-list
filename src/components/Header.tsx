@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from 'react'
 
-import moon from '../assets/icon-moon.svg'
-import sun from '../assets/icon-sun.svg'
+import moon from '../../assets/icon-moon.svg'
+import sun from '../../assets/icon-sun.svg'
 
 interface Props {
   toggleTheme: MouseEventHandler<HTMLImageElement>
