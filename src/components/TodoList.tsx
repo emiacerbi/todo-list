@@ -4,6 +4,9 @@ import { Footer } from './Footer'
 
 import { ReactSortable } from 'react-sortablejs'
 
+import cross from '../assets/icon-cross.svg'
+import check from '../assets/icon-check.svg'
+
 interface Props {
   todos: Note[]
   setTodos: Dispatch<SetStateAction<Note[]>>
@@ -56,7 +59,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                       <div className={`check-wrapper ${todo.complete && 'checked'} ${theme} `}>
                         {
                           todo.complete &&
-                            <img src="../../assets/icon-check.svg" alt="" />
+                            <img src={check} alt="" />
                         }
                       </div>
                     </div>
@@ -67,7 +70,7 @@ export const TodoList = ({ todos, setTodos, theme }: Props) => {
                       {text}
                     </p>
                     <span onClick={() => handleDelete(id)}>
-                      <img className='cross' src="../../assets/icon-cross.svg" alt="cross" width={13} />
+                      <img className='cross' src={cross} alt="cross" width={13} />
                     </span>
                   </div>
                 )
