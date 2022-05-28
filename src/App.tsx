@@ -8,7 +8,11 @@ import { TodoList } from './components/TodoList'
 
 const initialTodos = localStorage.getItem('todos')
   ? JSON.parse(localStorage.getItem('todos')!)
-  : []
+  : [{
+    id: 'placeholderId',
+    text: 'Buy groceries',
+    complete: false
+  }]
 
 function App () {
   const [inputValue, setInputValue] = useState('')

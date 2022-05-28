@@ -31,7 +31,7 @@
     height: 3rem;
     margin: 0 auto;
     padding: .5rem 3.6rem .4rem;
-    transition: background-color .5s ease;
+    transition: background-color .3s ease;
     border: none;
     border-radius: .25rem;
     background-color: $dark-200;
@@ -54,8 +54,6 @@
         border-radius: 50%;
         background: $dark-500;
         cursor: pointer;
-
-
     }
 
     &::placeholder {
