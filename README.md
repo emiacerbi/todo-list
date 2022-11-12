@@ -46,7 +46,7 @@ Users should be able to:
 ## Author
 
 - Website - [Personal Portfolio](https://www.your-site.com)
-- LinkedIn - [Emi Acerbi](https://www.linkedin.com/in/emiliano-acerbi-7a7141235/)
+- LinkedIn - [Emi Acerbi](https://www.linkedin.com/in/emiliano-acerbi)
 
 ## Acknowledgments
 
